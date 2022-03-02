@@ -1,24 +1,50 @@
-# README
+# <熊本あそび録>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+ 熊本県内のおすすめスポット (温泉・パワースポット・景色・飲食店等)
+を自由に投稿し、おすすめスポットの紹介や、感想を共有し、熊本県の魅力を
+県内外の人に知ってもらうサイト
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+おすすめスポットのシェア
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+ 私は、最近まで熊本県外で働いていたのですが、熊本の有名な所やおいしいお店等を尋ねられた際に、
+全国的に有名な食べ物やお店等しか答えられなかったので、私の知らないいいところを県内外の方にも
+知ってもらいたいという思いと、近年コロナの感染者が増加・減少を繰り返す状況となり海外や県外へ
+の旅行が危ぶまれているため、県内で知らなかった場所や、お店などの情報を共有し少しでもリフレッシュ
+してもらいたい！コロナが収束した際には、是非熊本に足を運んでもらい、多くの方に熊本を堪能してもらいたい！
+と思い、このテーマにしました。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+*熊本県のおすすめスポットを知りたい・共有したい方は勿論
+*おすすめスポットを通じて他の誰かと話がしたいという方
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+自分の行ったおすすめスポットを誰かに共有したい時や、他人がおすすめするスポットを知りたい時など。
+また、おすすめスポットを通じた交流の場としても活用できます。
 
-* ...
+## 設計書
+
+<...>
+
+## チャレンジ要素一覧
+
+<https://docs.google.com/spreadsheets/d/127EicPF9lLha0HIU6HOQDYIbhVIWptaDB4Bf6LL3em0/edit?usp=sharing>
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails ver.6.1.4
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+キロクマ<https://kumamoto.photo/archives/>
