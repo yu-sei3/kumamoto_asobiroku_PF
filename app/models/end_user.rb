@@ -15,6 +15,13 @@ class EndUser < ApplicationRecord
   has_many :following_end_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_end_user, through: :followed, source: :follower  # 自分をフォローしている人
 
+  has_one_attached :profile_image
+
+  # プロフィール画像未設定時表示
+  def get_profile_image(width, height)
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+
   # ユーザーをフォローする
   def follow(end_user_id)
     follower.create(followed_id: end_user_id)

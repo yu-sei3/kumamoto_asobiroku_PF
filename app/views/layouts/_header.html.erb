@@ -26,7 +26,7 @@
                   <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
                 </li>
                 <li>
-                  <%= link_to 'ログアウト', destroy_end_session_path, method: :delete, class: "text-dark" %>
+                  <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class: "text-dark" %>
                 </li>
               <% else %>
                 <li>
