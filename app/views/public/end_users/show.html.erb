@@ -1,0 +1,7 @@
+<div>
+  <h3><%= @end_user.name %></h3>
+  <%= image_tag @end_user.get_profile_image(100,100) %>
+</div>
+<div>
+  <%= link_to '編集', edit_end_user_path(@end_user), class: "btn btn-primary" %>
+</div>
