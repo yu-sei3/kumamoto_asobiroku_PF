@@ -26,6 +26,9 @@
                   <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
                 </li>
                 <li>
+                  <%= link_to '新規投稿', new_post_image_path, class: "text-dark" %>
+                </li>
+                <li>
                   <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class: "text-dark" %>
                 </li>
               <% else %>
