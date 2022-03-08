@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # Controller/Public/ ...
   scope module: :public do
     resources :end_users, only: [:index, :show, :edit, :update]
+    resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

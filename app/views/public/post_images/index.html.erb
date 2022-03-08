@@ -1,0 +1,10 @@
+<h1>投稿一覧</h1>
+  <% @post_images.each do |post_image| %>
+    <div>
+      <%= image_tag post_image.get_image %>
+      <p>投稿ユーザー画像：<%= image_tag post_image.get_profile_image(100,100) %></p>
+      <p>ユーザーネーム：<%= post_image.user.name %></p>
+      <p>所在地：<%= post_image.location %></p>
+      <p>紹介文：<%= post_image.user.name %></p>
+    </div>
+  <% end %>
