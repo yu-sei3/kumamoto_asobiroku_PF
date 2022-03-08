@@ -22,7 +22,6 @@ class Public::PostImagesController < ApplicationController
   def edit
   end
 
-  # 投稿データのストロングパラメーター
   private
 
   def post_image_params
