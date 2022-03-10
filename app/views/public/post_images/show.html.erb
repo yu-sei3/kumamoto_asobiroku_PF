@@ -1,2 +1,17 @@
-<h1>Public::PostImages#show</h1>
-<p>Find me in app/views/public/post_images/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3><%= @post_image.title %></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag @post_image.get_image(100,100) %>
+      <p>ユーザーネーム：<%= @post_image.end_user.name %></p>
+      <p>ジャンル：<%= @post_image.genre.name %></p>
+      <p>所在地：<%= @post_image.location %></p>
+      <p>紹介文：<%= @post_image.body %></p>
+      <%= link_to '編集する', edit_post_image_path(@post_image), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

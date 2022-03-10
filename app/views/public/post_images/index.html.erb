@@ -1,10 +1,21 @@
-<h1>投稿一覧</h1>
+<div class="container">
+  <div class="row">
+    <h1>投稿一覧</h1>
+  </div>
   <% @post_images.each do |post_image| %>
-    <div>
-      <%= image_tag post_image.get_image %>
-      <p>投稿ユーザー画像：<%= image_tag post_image.get_profile_image(100,100) %></p>
-      <p>ユーザーネーム：<%= post_image.user.name %></p>
-      <p>所在地：<%= post_image.location %></p>
-      <p>紹介文：<%= post_image.user.name %></p>
+    <div class="row">
+      <div class="col-lg-6">
+        <%= link_to post_image_path(post_image) do %>
+          <%= image_tag post_image.get_image(100,100) %>
+        <% end %>
+      </div>
+      <div class="col-lg-3 offset-2">
+        <p>ユーザーネーム：<%= post_image.end_user.name %></p>
+        <p>ジャンル：<%= post_image.genre.name %></p>
+        <p>所在地：<%= post_image.location %></p>
+        <p>タイトル：<%= post_image.title %></p>
+        <p>紹介文：<%= post_image.body %></p>
+      </div>
     </div>
   <% end %>
+</div>
