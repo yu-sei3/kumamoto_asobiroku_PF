@@ -4,9 +4,13 @@ class PostImage < ApplicationRecord
   belongs_to :genre
 
   has_many :favorites, dependent: :destroy
-  
+
   has_one_attached :image
-  
+
+  def get_image(width, height)
+    image
+  end
+
   def favorited_by?(end_user)
     favorites.exists?(end_user_id: end_user.id)
   end

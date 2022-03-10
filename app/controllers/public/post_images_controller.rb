@@ -12,20 +12,27 @@ class Public::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.find(params[:id])
-    @post_image.get_image
+    @post_images = PostImage.all
   end
 
   def show
+    @post_image = PostImage.find(params[:id])
   end
 
   def edit
+    @post_image = PostImage.find(params[:id])
+  end
+
+  def update
+    post_image = PostImage.find(params[:id])
+    post_image.update(post_image_params)
+    redirect_to post_image_path(post_image)
   end
 
   private
 
   def post_image_params
-    params.require(:post_image).permit(:end_user_id, :genre_id, :body, :location, :image)
+    params.require(:post_image).permit(:end_user_id, :genre_id, :title, :body, :location, :image)
   end
 
 end
