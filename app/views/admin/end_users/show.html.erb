@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>会員詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="flex justifycontent-center col-md-8">
+      <table class="table table-borderless">
+        <tr>
+          <th>会員</th>
+          <td><%= @end_user.id %></td>
+        </tr>
+        <tr>
+          <th>ユーザー名</th>
+          <td><%= @end_user.name %></td>
+        </tr>
+        <tr>
+          <td><%= @end_user.is_delete ? '退会中' : '有効' %></td>
+        </tr>
+        <tr>
+          <%= form_with model: @end_user, url: admin_end_user_path(@end_user.id), local: true do |f| %>
+            <td>
+              <%= f.radio_button :is_delete, :false %>
+              <%= f.label :is_delete, '有効' %>
+              <%= f.radio_button :is_delete, :true %>
+              <%= f.label :is_delete, '退会' %>
+            </td>
+            <td><%= f.submit '編集を保存', class: "btn btn-success" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
