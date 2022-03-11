@@ -13,6 +13,7 @@
       <p>紹介文：<%= @post_image.body %></p>
       <%= link_to '編集する', edit_post_image_path(@post_image), class: "btn btn-primary" %>
       <div>
+        <%= render "layouts/favorites", post_image: @post_image %>
         <p>コメント件数：<%= @post_image.post_comments.count %></p>
         <% @post_image.post_comments.each do |post_comment| %>
           <p><%= image_tag post_comment.end_user.get_profile_image(100,100) %></p>
