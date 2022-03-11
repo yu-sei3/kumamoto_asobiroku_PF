@@ -15,14 +15,16 @@ Rails.application.routes.draw do
   # HomesControlle
   root to: "homes#top"
   get "home/about" => "homes#about"
+  get "unsubscribe/:id" => "homes#unsubscribe", as: "confirm_unsubscribe"
+  patch ":id/withdraw/:id" => "homes#withdraw", as: "withdraw_end_user"
 
-  # Controller/Public/ ...
+  # Public/ ...Controller
   scope module: :public do
     resources :end_users, only: [:index, :show, :edit, :update]
     resources :post_images, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
 
-  # Controller/admin/ ...
+  # admin/ ...Controller
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :end_users, only: [:index, :show, :update]

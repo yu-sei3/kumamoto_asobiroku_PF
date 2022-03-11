@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-4">
+      <h2>
+        <strong>本当に退会しますか？</strong>
+      </h2>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col text-center m-3">
+        退会すると、投稿やコメントが出来なくなります。<br>
+        退会する場合は、『退会する』をクリックしてください。
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center m-3">
+        <%= link_to '退会しない', end_user_path(@end_user), class: "btn btn-primary mr-3" %>
+        <%= link_to '退会する', withdraw_end_user_path(@end_user), method: :patch, "data-confirm" => '本当に退会しますか？', class: "btn btn-danger" %>
+      </div>
+    </div>
+</div>
