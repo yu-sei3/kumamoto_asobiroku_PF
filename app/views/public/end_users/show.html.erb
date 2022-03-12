@@ -1,8 +1,16 @@
 <div>
-  <h3><%= @end_user.name %></h3>
+  <h3>
+    <%= @end_user.name %>
+    <%= link_to 'フォロー', follows_end_user_path(@end_user), class: "btn btn-success" %>
+    <%= @following_end_users.count %>
+    <%= link_to 'フォロワー', followers_end_user_path(@end_user), class: "btn btn-primary" %>
+    <%= @follower_end_user.count %>
+  </h3>
+
   <%= image_tag @end_user.get_profile_image(100,100) %>
 </div>
 <div>
+  <%= render 'layouts/follow_btn', end_user: @end_user %>
   <%= link_to '編集', edit_end_user_path(@end_user), class: "btn btn-primary" %>
   <%= link_to '退会する', confirm_unsubscribe_path(@end_user), class: "btn btn-danger" %>
 </div>

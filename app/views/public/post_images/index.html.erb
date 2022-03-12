@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div class="col-lg-3 offset-2">
-        <p>ユーザーネーム：<%= post_image.end_user.name %></p>
+        <p>ユーザーネーム：<%= link_to post_image.end_user.name, end_user_path(post_image.end_user) %></p>
         <p>ジャンル：<%= post_image.genre.name %></p>
         <p>所在地：<%= post_image.location %></p>
         <p>タイトル：<%= post_image.title %></p>
