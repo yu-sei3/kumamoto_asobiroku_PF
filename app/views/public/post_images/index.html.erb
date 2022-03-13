@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-lg-6">
         <%= link_to post_image_path(post_image) do %>
-          <%= image_tag post_image.get_image(100,100) %>
+          <%= image_tag post_image.get_image, size:'200x150' %>
         <% end %>
       </div>
       <div class="col-lg-3 offset-2">
