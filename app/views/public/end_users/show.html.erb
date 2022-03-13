@@ -7,7 +7,7 @@
     <%= @follower_end_user.count %>
   </h3>
 
-  <%= image_tag @end_user.get_profile_image(100,100) %>
+  <%= image_tag @end_user.get_profile_image, size:'100x100' %>
 </div>
 <div>
   <%= render 'layouts/follow_btn', end_user: @end_user %>

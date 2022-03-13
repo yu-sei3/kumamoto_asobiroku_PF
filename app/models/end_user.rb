@@ -20,7 +20,7 @@ class EndUser < ApplicationRecord
   has_one_attached :profile_image
 
   # プロフィール画像未設定時表示
-  def get_profile_image(width, height)
+  def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
