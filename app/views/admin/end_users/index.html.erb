@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h3>会員一覧</h3>
+    </div>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>会員</th>
+          <th>ユーザー名</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @end_users.each do |end_user| %>
+          <tr>
+            <td><%= end_user.id %></td>
+            <td>
+              <%= link_to admin_end_user_path(end_user.id) do %>
+                <%= end_user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= end_user.is_delete ? '退会' : '有効' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

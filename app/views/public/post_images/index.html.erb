@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h1>投稿一覧</h1>
+  </div>
+  <% @post_images.each do |post_image| %>
+    <div class="row">
+      <div class="col-lg-6">
+        <%= link_to post_image_path(post_image) do %>
+          <%= image_tag post_image.get_image, size:'200x150' %>
+        <% end %>
+      </div>
+      <div class="col-lg-3 offset-2">
+        <p>ユーザーネーム：<%= link_to post_image.end_user.name, end_user_path(post_image.end_user) %></p>
+        <p>ジャンル：<%= post_image.genre.name %></p>
+        <p>所在地：<%= post_image.location %></p>
+        <p>タイトル：<%= post_image.title %></p>
+        <p>紹介文：<%= post_image.body %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

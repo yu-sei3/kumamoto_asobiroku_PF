@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_user_id: 1
+  genre_id: 1
+  introduct: MyString
+  location: MyString
+  PostComment: MyString
+  end_user_id: 1
+  post_image_id: 1
+  comment: MyText
+  Genre: MyString
+  name: MyString
+  Favorite: MyString
+  end_user_id: 1
+  post_image_id: 1
+  Relationship: MyString
+  follower: one
+  followed: one
+
+two:
+  end_user_id: 1
+  genre_id: 1
+  introduct: MyString
+  location: MyString
+  PostComment: MyString
+  end_user_id: 1
+  post_image_id: 1
+  comment: MyText
+  Genre: MyString
+  name: MyString
+  Favorite: MyString
+  end_user_id: 1
+  post_image_id: 1
+  Relationship: MyString
+  follower: two
+  followed: two
