@@ -64,6 +64,9 @@ gem 'kaminari', '~> 1.2.1'
 # activestorageバリデーション
 gem 'activestorage-validator'
 
+# 緯度・経度の取得
+gem 'geocoder'
+
 # 環境変数化
 gem 'dotenv-rails'
 # MySQL
