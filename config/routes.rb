@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
   get "unsubscribe/:id" => "homes#unsubscribe", as: "confirm_unsubscribe"
   patch ":id/withdraw/:id" => "homes#withdraw", as: "withdraw_end_user"
+  resources :maps, only: [:index, :create, :destroy]
 
   # Public/ ...Controller
   scope module: :public do
