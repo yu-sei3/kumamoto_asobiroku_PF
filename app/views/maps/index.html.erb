@@ -62,7 +62,7 @@
   let geocoder
   // 地図検索関数
   function codeAddress(){
-    let inputAddress = document.getElementById('address');
+    let inputAddress = document.getElementById('address').value;
 
     geocoder.geocode({
       'address': inputAddress
