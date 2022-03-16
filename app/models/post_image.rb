@@ -6,6 +6,7 @@ class PostImage < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   has_many :favorites, dependent: :destroy
+  # has_many :favorited_end_user, throgh: :favorites, sorce: :end_user
 
   has_one_attached :image
 

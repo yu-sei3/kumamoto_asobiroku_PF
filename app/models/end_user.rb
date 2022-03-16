@@ -3,12 +3,15 @@ class EndUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  # 投稿機能
   has_many :post_images, dependent: :destroy
 
+  # コメント機能
   has_many :post_comments, dependent: :destroy
 
+  # いいね機能
   has_many :favorites, dependent: :destroy
+  # has_many :favorited_post_images, through: :favorites, source: :post_image
 
   # フォロー/フォロワー関係
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォローされる側を取得
@@ -17,6 +20,7 @@ class EndUser < ApplicationRecord
   has_many :following_end_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_end_user, through: :followed, source: :follower  # 自分をフォローしている人
 
+  # プロフィール画像
   has_one_attached :profile_image
 
   # プロフィール画像未設定時表示
