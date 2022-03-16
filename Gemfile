@@ -67,6 +67,9 @@ gem 'activestorage-validator'
 # 緯度・経度の取得
 gem 'geocoder'
 
+# jQuery導入
+gem 'jquery-rails'
+
 # 環境変数化
 gem 'dotenv-rails'
 # MySQL
