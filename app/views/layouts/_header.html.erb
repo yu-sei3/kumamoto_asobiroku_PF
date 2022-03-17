@@ -5,6 +5,12 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <p class="navbar-nav">
+        <% if end_user_signed_in? %>
+          ゆっくりして行きなっせ、<%= current_end_user.name %>さん！
+        <% end %>
+      </p>
+      <div class="row">
       <div class="collapse navbar-collapse header-item" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <!--管理者表示-->

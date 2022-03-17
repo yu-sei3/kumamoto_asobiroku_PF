@@ -5,10 +5,13 @@ class Public::PostImagesController < ApplicationController
   end
 
   def create
-    post_image = PostImage.new(post_image_params)
-    post_image.end_user_id = current_end_user.id
-    post_image.save
-    redirect_to post_images_path
+    @post_image = PostImage.new(post_image_params)
+    @post_image.end_user_id = current_end_user.id
+    if @post_image.save
+      redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -26,9 +29,12 @@ class Public::PostImagesController < ApplicationController
   end
 
   def update
-    post_image = PostImage.find(params[:id])
-    post_image.update(post_image_params)
-    redirect_to post_image_path(post_image)
+    @post_image = PostImage.find(params[:id])
+    if @post_image.update(post_image_params)
+      redirect_to post_image_path(@post_image)
+    else
+      render :edit
+    end
   end
 
   private
