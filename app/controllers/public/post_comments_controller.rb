@@ -1,16 +1,25 @@
 class Public::PostCommentsController < ApplicationController
 
   def create
-    post_image = PostImage.find(params[:post_image_id])
-    comment = current_end_user.post_comments.new(post_comment_params)
-    comment.post_image_id = post_image.id
-    comment.save
-    redirect_back(fallback_location: root_path)
+    @post_image = PostImage.find(params[:post_image_id])
+    @comment = current_end_user.post_comments.new(post_comment_params)
+    @comment.end_user_id = current_end_user.id
+    @comment.post_image_id = params[:post_image_id]
+    if @comment.save
+      flash.now[:notice] = "コメントの投稿に成功しました。"
+      render :post_comment
+    else
+      flash.now[:alert] = "文字を入力してください"
+      render :post_comment
+    end
   end
 
   def destroy
-    PostComment.find(params[:id]).destroy
-    redirect_back(fallback_location: root_path)
+    @post_image = PostImage.find(params[:post_image_id])
+    @comment = PostComment.find(params[:id])
+    @comment.destroy
+    flash.now[:notice] = "コメントを削除しました。"
+    render :post_comment
   end
 
   private
