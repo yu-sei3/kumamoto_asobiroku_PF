@@ -16,21 +16,14 @@
         <div id="favorite_btn_<%= @post_image.id %>">
           <%= render "public/favorites/favorite_btn", post_image: @post_image %>
         </div>
-        <p>コメント件数：<%= @post_image.post_comments.count %></p>
-        <% @post_image.post_comments.each do |post_comment| %>
-          <p><%= image_tag post_comment.end_user.get_profile_image, size: '100x100' %></p>
-          <%= post_comment.end_user.name %>
-          <%= post_comment.created_at.strftime("%Y/%m/%d") %><%= post_comment.comment %>
-          <% if post_comment.end_user == current_end_user %>
-            <%= link_to '削除', post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, class: "btn btn-danger" %>
-          <% end %>
-        <% end %>
+        <!--コメント投稿・一覧-->
+        <div id="comments_area">
+          <!--コメント一覧-->
+          <%= render 'public/post_comments/index', post_image: @post_image %>
+          <!--コメント投稿-->
+        </div>
+        <%= render 'public/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
       </div>
-      <div>
-        <%= form_with model: [@post_image, @post_comment], local: true do |f| %>
-          <%= f.text_area :comment, placeholder: 'コメントをここに', class: "form-control" %>
-          <%= f.submit '送信する' %>
-        <% end %>
       </div>
     </div>
   </div>
