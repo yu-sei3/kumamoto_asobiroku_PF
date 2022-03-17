@@ -11,7 +11,6 @@ class EndUser < ApplicationRecord
 
   # いいね機能
   has_many :favorites, dependent: :destroy
-  # has_many :favorited_post_images, through: :favorites, source: :post_image
 
   # フォロー/フォロワー関係
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォローされる側を取得
@@ -22,6 +21,10 @@ class EndUser < ApplicationRecord
 
   # プロフィール画像
   has_one_attached :profile_image
+
+  # バリデーション
+  validates :name, length: {minimum: 2, maximum: 20}, uniqueness: true
+  # validates :introduction, length: {maximum: 100}
 
   # プロフィール画像未設定時表示
   def get_profile_image

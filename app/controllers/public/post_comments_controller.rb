@@ -6,10 +6,10 @@ class Public::PostCommentsController < ApplicationController
     @comment.end_user_id = current_end_user.id
     @comment.post_image_id = params[:post_image_id]
     if @comment.save
-      flash.now[:notice] = "コメントの投稿に成功しました。"
+      flash[:notice] = "コメントの投稿に成功しました。"
       render :post_comment
     else
-      flash.now[:alert] = "文字を入力してください"
+      flash[:alert] = "文字を入力してください"
       render :post_comment
     end
   end
@@ -18,7 +18,7 @@ class Public::PostCommentsController < ApplicationController
     @post_image = PostImage.find(params[:post_image_id])
     @comment = PostComment.find(params[:id])
     @comment.destroy
-    flash.now[:notice] = "コメントを削除しました。"
+    flash[:notice] = "コメントを削除しました。"
     render :post_comment
   end
 

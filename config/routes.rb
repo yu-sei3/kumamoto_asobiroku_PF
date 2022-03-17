@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+ devise_scope :end_user do
+    post 'public/session/guest_sign_in', to: 'public/sessions#guest_sign_in'
+ end
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {

@@ -18,9 +18,9 @@
         </div>
         <!--コメント投稿・一覧-->
         <div id="comments_area">
-          <!--コメント一覧-->
-          <%= render 'public/post_comments/index', post_image: @post_image %>
-          <!--コメント投稿-->
+        <!--コメント一覧-->
+        <%= render 'public/post_comments/index', post_image: @post_image %>
+        <!--コメント投稿-->
         </div>
         <%= render 'public/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
       </div>

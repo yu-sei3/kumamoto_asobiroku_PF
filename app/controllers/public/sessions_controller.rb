@@ -18,7 +18,7 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
+  # ゲスト用追記
   protected
 
   def end_user_state
