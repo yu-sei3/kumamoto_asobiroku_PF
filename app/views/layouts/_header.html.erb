@@ -29,6 +29,9 @@
             <ul class="navbar-nav ml-auto">
               <% if end_user_signed_in? %>
                 <li>
+                  <%= link_to "もどる", 'javascript:history.back()' %>
+                </li>
+                <li>
                   <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
                 </li>
                 <li>
@@ -36,6 +39,9 @@
                 </li>
                 <li>
                   <%= link_to '投稿一覧', post_images_path, class: "text-dark" %>
+                </li>
+                <li>
+                  <%= link_to 'お問い合わせ', new_contact_path(end_user_id: current_end_user.id) %>
                 </li>
                 <li>
                   <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class: "text-dark" %>

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   patch ":id/withdraw/:id" => "homes#withdraw", as: "withdraw_end_user"
   resources :maps, only: [:index, :create, :destroy]
 
+  # ContactsController
+  resources :contacts, only: [:new, :create]
+
   # Public/ ...Controller
   scope module: :public do
     resources :end_users, only: [:show, :edit, :update] do
