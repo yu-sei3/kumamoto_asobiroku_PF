@@ -18,9 +18,17 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  # ゲスト用追記
+
+  # ゲストログイン用
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to end_user_path(end_user), notice: 'guestuserでログインしました。'
+  end
+
   protected
 
+  # 退会処理
   def end_user_state
     @end_user = EndUser.find_by(email: params[:end_user][:email])
     if @end_user

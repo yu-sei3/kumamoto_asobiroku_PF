@@ -2,6 +2,7 @@
   <h1>熊本あそび録</h1>
   <div>
     <%= link_to 'マップ', maps_path %>
+    <%= link_to 'ゲストログイン(PF/閲覧用)', public_session_guest_sign_in_path, method: :post, class: "btn btn-secondary" %>
     <%= link_to 'ログイン', new_end_user_session_path, class: "btn btn-primary" %>
     <%= link_to '新規登録', new_end_user_registration_path, class: "btn btn-success" %>
   </div>
