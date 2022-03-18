@@ -39,7 +39,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
-
+  # sign_up後の遷移先指定
   def after_sign_up_path_for(resource)
     end_user_path(resource)
   end

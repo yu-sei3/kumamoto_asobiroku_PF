@@ -16,10 +16,13 @@
           <!--管理者表示-->
           <% if admin_signed_in? %>
             <li>
-              <%= link_to '会員一覧', admin_end_users_path, class: "text-dark" %>
+              <%= link_to "Back", 'javascript:history.back()', class: "text-dark mr-3" %>
             </li>
             <li>
-              <%= link_to 'ジャンル一覧', admin_genres_path, class: "text-dark" %>
+              <%= link_to '会員一覧', admin_end_users_path, class: "text-dark mr-3" %>
+            </li>
+            <li>
+              <%= link_to 'ジャンル一覧', admin_genres_path, class: "text-dark mr-3" %>
             </li>
             <li>
               <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "text-dark" %>
