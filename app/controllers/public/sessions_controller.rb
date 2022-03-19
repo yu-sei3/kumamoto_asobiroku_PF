@@ -19,19 +19,18 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  # ゲストログイン用
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to end_user_path(end_user), notice: 'guestuserでログインしました。'
+  end
 
   protected
 
   # sign_in後の遷移先指定
   def after_sign_in_path_for(resource)
     end_user_path(resource)
-  end
-
-  # ゲストログイン用
-  def guest_sign_in
-    end_user = EndUser.guest
-    sign_in end_user
-    redirect_to end_user_path(end_user), notice: 'guestuserでログインしました。'
   end
 
   # 退会処理
