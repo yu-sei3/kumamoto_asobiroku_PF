@@ -2,12 +2,15 @@ class Public::PostImagesController < ApplicationController
 
   def new
     @post_image = PostImage.new
+    @maps = Map.all
+    @map = Map.new
   end
 
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
     if @post_image.save
+      @post_image.maps.create(post_image_maps_params)
       redirect_to post_images_path
     else
       render :new
@@ -47,6 +50,10 @@ class Public::PostImagesController < ApplicationController
 
   def post_image_params
     params.require(:post_image).permit(:end_user_id, :genre_id, :title, :body, :location, :image)
+  end
+
+  def post_image_maps_params
+    params.require(:post_image).permit(:latitube, :longitube)
   end
 
 end

@@ -9,6 +9,8 @@ class PostImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   # 投稿機能
   has_one_attached :image
+  #
+  has_many :maps
 
   # バリデーション
   validates :genre_id, :title, :location, presence: true
