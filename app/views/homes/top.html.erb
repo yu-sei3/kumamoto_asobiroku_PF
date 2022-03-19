@@ -1,9 +1,24 @@
-<main>
-  <h1>熊本あそび録</h1>
-  <div>
-    <%= link_to 'マップ', maps_path %>
-    <%= link_to 'ゲストログイン(PF/閲覧用)', public_session_guest_sign_in_path, method: :post, class: "btn btn-secondary" %>
-    <%= link_to 'ログイン', new_end_user_session_path, class: "btn btn-primary" %>
-    <%= link_to '新規登録', new_end_user_registration_path, class: "btn btn-success" %>
+<div class="container">
+  <div class="row mt-2 mb-2">
+    <div class="col-md-3">
+      <%= render 'layouts/sidebar', genres: @genres %>
+    </div>
+    <div class="col-md-9">
+    <%= image_tag 'kumamotojyou.jpg', size: "600x450" %>
+    </div>
   </div>
-</main>
+  <div class="row mt-3 mb-3">
+    <div class="btn-group col-2 md-2">
+      <%= link_to 'マップ', maps_path %>
+    </div>
+    <div class="btn-group col-4 md-4">
+      <%= link_to 'ゲストログイン(PF/閲覧用)', public_session_guest_sign_in_path, method: :post, class: "btn-square-so-pop" %>
+    </div>
+    <div class="btn-group col-3 md-3">
+      <%= link_to 'ログイン', new_end_user_session_path, class: "btn-square-so-pop" %>
+    </div>
+    <div class="btn-group col-3 md-3">
+      <%= link_to '新規登録', new_end_user_registration_path, class: "btn-square-so-pop" %>
+    </div>
+  </div>
+</div>
