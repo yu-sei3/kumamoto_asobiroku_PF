@@ -91,14 +91,14 @@ ActiveRecord::Schema.define(version: 2022_03_22_051536) do
     t.string "address"
     t.float "latitube"
     t.float "longitube"
+    t.integer "post_image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "post_image_id", null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.integer "post_image_id"
+    t.integer "post_image_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

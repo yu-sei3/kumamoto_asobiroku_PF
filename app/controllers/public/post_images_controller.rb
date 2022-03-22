@@ -9,6 +9,7 @@ class Public::PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
+    #binding.pry
     if @post_image.save
       @post_image.maps.create(post_image_maps_params)
       redirect_to post_images_path
