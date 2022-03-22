@@ -1,33 +1,31 @@
+<div class="container p-3">
+  <div class="row">
+    <div class="col text-center">
 <%= form_with(model: @contact, local: true) do |f| %>
     <div class='form-wrap'>
       <div class='form-header'>
-        <h5 class='form-header-text'>
+        <h3 class='form-header-text p-2'>
           お問い合わせフォーム
-        </h5>
+        </h3>
       </div>
     </div>
-    <div class="correct-msg-box">
-      <% if @contact.errors.any? %>
-        <div id="error_explanation">
-          <ul><% @contact.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <div class="row text-center">
+        <%= render 'layouts/errors', model: @contact %>
+    </div>
       <div class="correct-msg-main">
         <div class="contact-form">
-            <div class="correct-text-field">
-              <%= f.label "お名前" %>
-              <%= f.text_field :name, placeholder: "お名前", class: "input-form" %>
+          <p>～ 管理者へお問い合わせ ～</p>
+            <div class="form-group row">
+              <%= f.label "ユーザー名", class: "col-md-4" %>
+              <%= f.text_field :name, placeholder: "ユーザー名", class: "form-control col-md-6" %>
             </div>
-            <div class="correct-text-field">
-              <%= f.label "お問合せ内容" %>
-              <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form" %>
+            <div class="cform-group row">
+              <%= f.label "お問合せ内容", class: "col-md-4" %>
+              <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "form-control col-md-6" %>
             </div>
-            <div class="send-btn-contents">
+            <div class="sform-group">
               <div class="register-btn">
-                <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %>
+                <%= f.button type: "submit", class: "btn-square-so-pop w-25 mt-3", style: 'border-style: none;' do %>
                   送信 <i class="fas fa-paper-plane"></i>
                 <% end %>
               </div>
@@ -36,3 +34,6 @@
       </div>
   </div>
 <% end %>
+    </div>
+  </div>
+</div>
