@@ -1,0 +1,39 @@
+<table class="table my-2">
+  <tr><%= image_tag end_user.get_profile_image, size: '100x100', class: "rounded-circle" %></tr>
+  <tr>
+    <th scope="col-3">アカウント名</th>
+    <th><%= end_user.name %></th>
+  </tr>
+  <tr>
+    <th>プロフィール</th>
+    <th><%= end_user.introduction %></th>
+  </tr>
+  <tr>
+    <th>follows</th>
+    <th>
+      <%= link_to follows_end_user_path(end_user) do %>
+        <%= @following_end_users.count %>
+      <% end %>
+    </th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th>
+      <%= link_to followers_end_user_path(end_user) do %>
+        <%= @follower_end_user.count %>
+      <% end %>
+    </th>
+  </tr>
+</table>
+<div class="row">
+  <%= render 'layouts/follow_btn', end_user: end_user %>
+</div>
+<div class="row">
+  <% if !(@end_user.name == "guestuser") %>
+    <% if end_user == current_end_user %>
+      <%= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

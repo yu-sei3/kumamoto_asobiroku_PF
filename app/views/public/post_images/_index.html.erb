@@ -1,0 +1,21 @@
+  <div class="container-fluid">
+    <div class="row">
+      <% post_images.each do |post_image| %>
+      <div class="border">
+        <%= post_image.created_at.strftime("%Y/%m/%d") %>
+        <span><i class="fas fa-user"></i>：<%= post_image.end_user.name %></span>
+        <div>
+          <%= link_to post_image_path(post_image) do %>
+            <%= image_tag post_image.get_image, size: '200x150' %>
+          <% end %>
+            <p>
+              <%= link_to post_image_path(post_image.id), class: "text-dark" do %>
+                <strong><i class="far fa-flag"></i><span><%= post_image.title %></span></strong>
+              <% end %>
+            </p>
+            <p>紹介文：<%= post_image.body %></p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>

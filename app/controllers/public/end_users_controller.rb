@@ -2,7 +2,7 @@ class Public::EndUsersController < ApplicationController
   # 会員以外の機能制限
   before_action :authenticate_end_user!
   # ゲスト用編集機能制限
-  before_action :ensure_guest_end_user, only: [:edit]
+  # before_action :ensure_guest_end_user, only: [:edit]
 
   def show
     @end_user = EndUser.find(params[:id])
@@ -13,6 +13,17 @@ class Public::EndUsersController < ApplicationController
 
   def edit
     @end_user = EndUser.find(params[:id])
+    @following_end_users = @end_user.following_end_user
+    @follower_end_user = @end_user.follower_end_user
+  end
+
+  def update
+    @end_user = EndUser.find(params[:id])
+    if @end_user.update(end_user_params)
+      redirect_to end_user_path(@end_user), notice: "You have updated user successfully"
+    else
+      render :edit
+    end
   end
 
   def follows
@@ -28,7 +39,7 @@ class Public::EndUsersController < ApplicationController
   private
 
   def end_user_params
-    params.require(:end_user).permit(:name, :body, :profile_image)
+    params.require(:end_user).permit(:name, :introduction, :profile_image)
   end
 
   # ゲスト用制限
