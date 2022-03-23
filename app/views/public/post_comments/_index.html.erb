@@ -4,7 +4,7 @@
   </div>
   <%= post_comment.end_user.name %>
   <p>
-    <%= image_tag post_comment.end_user.get_profile_image, size: '100x100' %>
+    <%= image_tag post_comment.end_user.get_profile_image, size: '100x100', class: "rounded-circle" %>
     <%= post_comment.comment %>
   </p>
   <% if post_comment.end_user == current_end_user %>

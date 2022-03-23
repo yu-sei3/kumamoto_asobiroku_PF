@@ -1,17 +1,13 @@
-<div class="container">
+<div class="container my-3 py-2">
   <div class="row">
-    <div class="col-md-3">
-      <h3><%= @post_image.title %></h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <%= image_tag @post_image.get_image, size: '100x100' %>
+    <div class="col-md-6">
+      <h3><strong><i class="far fa-flag"></i><span><%= @post_image.title %></span></strong></h3>
+      <%= image_tag @post_image.get_image, size: '150x100' %>
       <p>ユーザーネーム：<%= link_to @post_image.end_user.name, end_user_path(@post_image.end_user) %></p>
       <p>ジャンル：<%= @post_image.genre.name %></p>
       <p>所在地：<%= @post_image.location %></p>
       <p>紹介文：<%= @post_image.body %></p>
-      <%= link_to '編集する', edit_post_image_path(@post_image), class: "btn btn-primary" %>
+      <%= link_to '編集する', edit_post_image_path(@post_image), class: "btn-square-so-pop text-center w-25" %>
       <div>
         <div id="favorite_btn_<%= @post_image.id %>">
           <%= render "public/favorites/favorite_btn", post_image: @post_image %>
@@ -24,7 +20,9 @@
         </div>
         <%= render 'public/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
       </div>
-      </div>
+    </div>
+    <div class="col-md-6">
+      <%= render 'layouts/map', post_image: @post_image %>
     </div>
   </div>
 </div>
