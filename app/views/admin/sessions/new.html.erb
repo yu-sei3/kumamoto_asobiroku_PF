@@ -2,7 +2,7 @@
   <div class="row">
     <h3 class="col-12 p-3">
       <strong>管理者ログイン</strong>
-    </div>
+    </h3>
   </div>
   <%= form_with model: @admin, url: new_admin_session_path, local: true do |f| %>
     <div class="form-group row">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-primary w-25 col-md-2 offset-5" %>
+      <%= f.submit "Log in", class: "btn-square-so-pop w-25 col-md-2 offset-5" %>
     </div>
   <% end %>
 

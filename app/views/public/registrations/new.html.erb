@@ -4,13 +4,12 @@
       <h2>熊本あそび録</h2>
     </div>
   </div>
-  <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f| %>
-    <div class="row">
-      <div class="col">
-        <%= render "public/shared/error_messages", resource: resource %>
-
-      </div>
+  <div class="row">
+    <div class="col">
+      <%= render "public/shared/error_messages", resource: resource %>
     </div>
+  </div>
+  <%= form_with model: @end_user, url: end_user_registration_path, local: true do |f| %>
 
     <div class="form-group row m-2">
       <%= f.label :name, "ユーザー名", class: "col-md-4" %>

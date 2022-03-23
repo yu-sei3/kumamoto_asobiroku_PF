@@ -1,4 +1,7 @@
 <div class="container p-3">
+    <div class="row text-center">
+      <%= render 'layouts/errors', model: @contact %>
+    </div>
   <div class="row">
     <div class="col text-center">
 <%= form_with(model: @contact, local: true) do |f| %>
@@ -8,9 +11,6 @@
           お問い合わせフォーム
         </h3>
       </div>
-    </div>
-    <div class="row text-center">
-        <%= render 'layouts/errors', model: @contact %>
     </div>
       <div class="correct-msg-main">
         <div class="contact-form">
