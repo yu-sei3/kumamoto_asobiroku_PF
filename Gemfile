@@ -71,6 +71,9 @@ gem 'geocoder'
 # jQuery導入
 gem 'jquery-rails'
 
+# errorメッセージの日本語化
+gem 'rails-i18n'
+
 # 環境変数化
 gem 'dotenv-rails'
 # MySQL
