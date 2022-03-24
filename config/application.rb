@@ -11,6 +11,12 @@ module KumamotoAsobiroku
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # field_with_errorsによるレイアウト崩れ防止
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    
+    # errorメッセージの日本語化
+    config.i18n.default_locale = :ja
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

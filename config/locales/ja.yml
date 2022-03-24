@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+  attributes:
+    end_user:
+    name: ユーザー名
+    password: パスワード
+    email: メールアドレス
+    image: 画像
+    genre: ジャンル
+    genre_id: ジャンル
+    title: タイトル
+    location: 所在地
+    body: 紹介文
+    content: お問い合わせ内容

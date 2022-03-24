@@ -1,8 +1,48 @@
 <div class="container">
   <div class="row py-5">
     <div class="col-md-5">
-      <%= render "layouts/errors", model: @post_image %>
-      <%= render "public/post_images/form", post_image: @post_image %>
+      <%= form_with model: @post_image, local: true do |f| %>
+        <h4>タイトル</h4>
+        <%= f.text_field :title, class: "form-control col-md-6" %>
+        <p class="text-danger">
+          <% if @post_image.errors.include?(:title) %>
+            <%= @post_image.errors.full_messages_for(:title).first %>
+          <% end %>
+        </p>
+        <h4>画像</h4>
+        <%= f.file_field :image, accept: "image/*", class: "form-control-file" %>
+        <p class="text-danger">
+          <% if @post_image.errors.include?(:image) %>
+            <%= @post_image.errors.full_messages_for(:image).first %>
+          <% end %>
+        </p>
+        <h4>ジャンル</h4>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => true, class: "form-control col-md-6" %>
+        <p class="text-danger">
+          <% if @post_image.errors.include?(:genre_id) %>
+            <%= @post_image.errors.full_messages_for(:genre_id).first %>
+          <% end %>
+        </p>
+        <h4>所在地</h4>
+        <%= f.text_field :location, class: "form-control col-md-6" %><br>
+        <p class="text-danger">
+          <% if @post_image.errors.include?(:location) %>
+            <%= @post_image.errors.full_messages_for(:location).first %>
+          <% end %>
+        </p>
+        <input class="form-control col-md-6 mb-1" id="address" type="textbox" Value="">
+        <input type="button" value='地図を検索' onclick="codeAddress()">
+        <%= f.hidden_field :latitube, :value => "" %>
+        <%= f.hidden_field :longitube, :value => "" %>
+        <h4>紹介文</h4>
+        <%= f.text_area :body, class: "form-control col-md-6" %>
+        <p class="text-danger">
+          <% if @post_image.errors.include?(:body) %>
+            <%= @post_image.errors.full_messages_for(:body).first %>
+          <% end %>
+        </p>
+        <%= f.submit '投稿', class: "text-center btn-square-so-pop mt-3 w-25" %>
+      <% end %>
     </div>
     <div class="col-md-6">
       <h2 >Google Map</h2>
