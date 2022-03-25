@@ -1,4 +1,6 @@
 class Public::PostImagesController < ApplicationController
+  # 会員以外のaction制限
+  before_action :authenticate_end_user!, only: [:create, :show, :update,]
 
   def new
     @post_image = PostImage.new

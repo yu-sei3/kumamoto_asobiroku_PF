@@ -42,3 +42,27 @@ footer {
 .form-control {
   font-size: 12px;
 }
+
+.genre {
+  margin: 2em 0;
+  border: solid 1px #000;
+}
+
+.genre .genre-search {
+  background: #9bf9cc;
+  padding: 3px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  border-bottom: solid 1px #000;
+}
+
+.genre-text {
+  padding: 15px 20px;
+}
+
+.genre-text a {
+  color: #000;
+  font-size: 1.1em;
+  transition: .3s;
+}

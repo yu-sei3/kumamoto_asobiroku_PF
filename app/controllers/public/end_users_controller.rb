@@ -1,6 +1,7 @@
 class Public::EndUsersController < ApplicationController
-  # 会員以外の機能制限
+  # 会員以外のaction制限
   before_action :authenticate_end_user!
+
   # ゲスト用編集機能制限
   # before_action :ensure_guest_end_user, only: [:edit]
 

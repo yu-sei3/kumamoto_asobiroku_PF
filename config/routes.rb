@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+    resources :genres, only: [:show]
   end
 
   # admin/ ...Controller
