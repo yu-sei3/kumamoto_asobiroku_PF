@@ -1,12 +1,10 @@
 <div class="genre">
-  <h3 class="genre-search">
-    <strong>ジャンル一覧</strong>
-  </h3>
-  <ul class="genre-text-list">
+  <div class="genre-search">ジャンル検索</div>
+  <p class="genre-text">
     <% genres.each do |genre| %>
-      <li class="genere-text">
-          <%= genre.name %>
-      </li>
+      <%= link_to genre_path(genre.id) do %>
+        <%= genre.name %><br>
+      <% end %>
     <% end %>
-  </ul>
+  </p>
 </div>
