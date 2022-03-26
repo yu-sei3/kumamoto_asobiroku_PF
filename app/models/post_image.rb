@@ -10,7 +10,7 @@ class PostImage < ApplicationRecord
   # 投稿機能
   has_one_attached :image
   #
-  has_many :maps
+  has_one :map
 
   # バリデーション
   validates :genre_id, :title, :location, presence: true
