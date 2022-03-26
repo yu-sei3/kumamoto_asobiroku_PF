@@ -33,6 +33,7 @@
               <% if end_user_signed_in? %>
                 <li>
                   <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
+                  
                 </li>
                 <li>
                   <%= link_to '新規投稿', new_post_image_path, class: "text-dark ml-3" %>
