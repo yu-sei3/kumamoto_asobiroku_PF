@@ -56,9 +56,9 @@
       </style>
 
       <script>
-        let map
+        var map
 
-        const display = document.getElementById("display")
+        var display = document.getElementById("display")
 
         // mapの表示関数
         function initMap(){
@@ -72,35 +72,9 @@
             },
             zoom: 12,
           });
-
-          // mapsテーブルにあるそれぞれのレコードをmap上に表示
-          <% @post_image.maps.each do |m| %>
-            (function(){
-              var contentString = "住所：<%= m.address %>";
-
-              // マーカーを立てる
-              var marker = new google.maps.Marker({
-                position:{lat: <%= m.latitube %>, lng: <%= m.longitube %>},
-                map: map,
-                title: contentString
-              });
-
-              // 情報ウィンドウ(吹き出し)の定義
-              // 投稿の詳細ページへのリンクも
-              var infowindow = new google.maps.InfoWindow({
-                position: {lat: <%= m.latitube %>, lng: <%= m.longitube %>},
-                content: "<a href='<%= map_url(m.id) %>' target='_blank'> <%= m.address %></a>"
-              });
-
-              // クリックしたときに情報ウィンドウを表示
-              marker.addListener("click", function(){
-                infowindow.open(map, marker);
-              });
-            })();
-          <% end %>
         }
 
-        let geocoder
+        var geocoder
         // 地図検索関数
         function codeAddress(){
           let inputAddress = document.getElementById('address').value;
@@ -109,18 +83,30 @@
             'address': inputAddress
           }, function (results, status){
             if (status == 'OK') {
+              // マーカーをセンターに表示する
               map.setCenter(results[0].geometry.location);
               var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location
               });
-              // console.log(results[0].geometry.location.ads());
-              console.log(results[0].geometry.location.lat());
-              console.log(results[0].geometry.location.lng());
+
               document.getElementById("post_image_latitube").value = results[0].geometry.location.lat();
               document.getElementById("post_image_longitube").value = results[0].geometry.location.lng();
               display.textContent = "検索結果：" + results[0].geometry.location
-            } else {
+
+               // 情報ウィンドウ(吹き出し)の定義※検索した値を挿入
+              var infowindow = new google.maps.InfoWindow({
+                position:results[0].geometry.location,
+                content: inputAddress
+              });
+
+              // クリックしたときに情報ウィンドウを表示
+              marker.addListener("click", function(){
+                infowindow.open(map, marker);
+              });
+            }
+
+            else {
                 alert('該当する結果がありませんでした：' + status);
             }
           });

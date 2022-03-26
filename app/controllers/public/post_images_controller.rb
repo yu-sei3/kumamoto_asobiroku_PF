@@ -12,7 +12,9 @@ class Public::PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
     if @post_image.save
-      @post_image.maps.create(post_image_maps_params)
+      map = Map.new(post_image_maps_params)
+      map.post_image_id = @post_image.id
+      map.save
       redirect_to post_images_path
     else
       render :new
