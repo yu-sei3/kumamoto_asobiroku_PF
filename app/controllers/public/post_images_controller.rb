@@ -12,7 +12,7 @@ class Public::PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
     if @post_image.save
-      flash[:notice] = "投稿されました！！"
+      flash[:notice] = "よか あそび場の増えました！！ありがとうございます( ⑉¯ ꇴ ¯⑉ )"
       map = Map.new(post_image_maps_params)
       map.post_image_id = @post_image.id
       map.save
@@ -23,7 +23,8 @@ class Public::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all.order(created_at: :desc)
+    @post_images = PostImage.page(params[:page]).order(created_at: :desc)
+    @post_image_all = PostImage.all
     @genres = Genre.all
   end
 
@@ -40,6 +41,7 @@ class Public::PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     if @post_image.update(post_image_params)
+      flash[:notice] = "ばっちり保存できました(   ¯꒳¯ )ｂ✧"
       redirect_to post_image_path(@post_image)
     else
       render :edit

@@ -12,8 +12,15 @@
 
     <%= render 'layouts/header' %>
   <body class="d-flex flex-column vh-100">
-    <%= flash[:notice] %>
-      <%= yield %>
+    <main class="mb-auto">
+      <div class="text-center pt-5">
+        <h4>
+          <%= flash[:notice] %>
+          <%= flash[:alert] %>
+        </h4>
+      </div>
+        <%= yield %>
+    </main>
   </body>
   <%= render 'layouts/footer' %>
 </html>

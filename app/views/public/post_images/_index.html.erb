@@ -1,25 +1,17 @@
 <% post_images.each do |post_image| %>
-  <div class="col-lg-3">
-    <div class="card row">
-      <%= image_tag post_image.get_image, class: "d-block w-100", size: ('283x233') %>
-      <div class="card-body">
-        <div class="row d-flex flex-row bd-highlight">
-          <div class="bd-highlight col">
-            <p class="card-title">
-              <%= post_image.created_at.strftime("%Y/%m/%d") %><br>
-              <%= link_to post_image_path(post_image.id), class: "text-dark" do %>
-                <strong><i class="far fa-flag"></i><span> <%= post_image.title %>｜</span></strong>
-              <% end %>
-              <span>
-                <i class="far fa-comment-alt"></i>
-                <%= post_image.post_comments.count %>
-              </span><br>
-              <span><%= image_tag post_image.end_user.get_profile_image, size: '30x30', class: "rounded-circle"; %>：<%= post_image.end_user.name %></span>
-            </p>
-            <p class="card-text">所在地：<%= post_image.location %></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-4 col-lg-3 py-2">
+    <%= image_tag post_image.get_image, class: "d-block w-100", size: ('283x233') %>
+    <p class="card-title">
+      <%= post_image.created_at.strftime("%Y/%m/%d") %><br>
+      <%= link_to post_image_path(post_image.id), class: "text-dark" do %>
+        <strong><i class="far fa-flag"></i><span> <%= post_image.title %>｜</span></strong>
+      <% end %>
+      <span>
+        <i class="far fa-comment-alt"></i>
+        <%= post_image.post_comments.count %>
+      </span><br>
+      <span><%= image_tag post_image.end_user.get_profile_image, size: '30x30', class: "rounded-circle"; %>：<%= post_image.end_user.name %></span>
+    </p>
+    <p class="card-text">所在地：<%= post_image.location %></p>
   </div>
 <% end %>
