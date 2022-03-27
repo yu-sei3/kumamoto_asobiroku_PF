@@ -12,3 +12,10 @@ ja:
     location: 所在地
     body: 紹介文
     content: お問い合わせ内容
+    views:
+    pagination:
+    first: <i class="fas fa-angle-double-left"></i>
+    last: <i class="fas fa-angle-double-right"></i>
+    previous: <i class="fas fa-angle-left"></i>
+    next: <i class="fas fa-angle-right"></i>
+    truncate: "..."

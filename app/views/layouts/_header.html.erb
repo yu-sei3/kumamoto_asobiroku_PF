@@ -1,17 +1,13 @@
-<header class="border border-dark">
+<header>
   <div class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand mr-5" href="/"><span>熊本あそび録</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div class="row center-block">
         <div>
-          <%= link_to 'javascript:history.back()', class: "text-dark mr-2" do %>
-            <i class="fas fa-angle-double-left"></i>Back
-          <% end %>
+          <i class="fas fa-reply"></i>
+          <%= link_to 'Back', 'javascript:history.back()', class: "menu-list text-dark mr-2" %>
         </div>
-        <div class="collapse navbar-collapse header-item" id="navbarNavDropdown">
+        <div>
           <ul class="navbar-nav ml-auto">
             <!--管理者表示-->
             <% if admin_signed_in? %>
@@ -29,21 +25,24 @@
               <ul class="navbar-nav ml-auto">
                 <% if end_user_signed_in? %>
                   <li>
-                    <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
+                    <%= link_to 'マイページ', end_user_path(current_end_user), class: "menu-list text-dark" %>
+                      <i class="menu-icon fas fa-user"></i>
                   </li>
                   <li>
-                    <%= link_to '新規投稿', new_post_image_path, class: "text-dark ml-3" %>
+                    <%= link_to '新規投稿', new_post_image_path, class: "menu-list text-dark ml-3" %>
+                    <i class="menu-icon fas fa-pen-square"></i>
                   </li>
                   <li>
-                    <%= link_to post_images_path, class: "text-dark ml-3" do %>
-                      <i class="far fa-images"></i>投稿一覧
-                    <% end %>
+                    <%= link_to '投稿一覧', post_images_path, class: "menu-list text-dark ml-3" %>
+                    <i class="menu-icon far fa-images"></i>
                   </li>
                   <li>
-                    <%= link_to 'お問い合わせ', new_contact_path(end_user_id: current_end_user.id), class: "text-dark ml-3" %>
+                    <%= link_to 'お問い合わせ', new_contact_path(end_user_id: current_end_user.id), class: "menu-list text-dark ml-3" %>
+                    <i class="menu-icon far fa-envelope"></i>
                   </li>
                   <li>
-                    <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？", class: "text-dark ml-3" %>
+                    <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？", class: "menu-list text-dark ml-3" %>
+                    <i class="menu-icon fas fa-sign-out-alt"></i>
                   </li>
                 <% end %>
               </ul>

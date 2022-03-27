@@ -3,10 +3,6 @@ header {
   background-color: #9bf9cc;
 }
 
-body {
-  background-image: url("<%= asset_path('haikei_image.jpg') %>");
-}
-
 footer {
   width: 100%;
   margin: 0, auto;
@@ -49,4 +45,19 @@ footer {
 
 .table a {
   color: black;
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  .menu-list {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline-block;
+    font-size: 20px;
+  }
 }

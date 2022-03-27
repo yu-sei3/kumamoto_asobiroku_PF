@@ -7,7 +7,7 @@ class Public::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
-    @post_images = @end_user.post_images
+    @post_images = @end_user.post_images.page(params[:page])
     @following_end_users = @end_user.following_end_user
     @follower_end_user = @end_user.follower_end_user
   end
@@ -21,7 +21,8 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      redirect_to end_user_path(@end_user), notice: "編集内容が保存されました"
+      redirect_to end_user_path(@end_user)
+      flash[:notice] = "ばっちり保存できました(   ¯꒳¯ )ｂ✧"
     else
       render :edit
     end
