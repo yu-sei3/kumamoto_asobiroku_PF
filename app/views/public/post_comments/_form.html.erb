@@ -1,4 +1,6 @@
 <%= form_with model: [post_image, post_comment], local: false do |f| %>
-  <%= f.text_area :comment, placeholder: 'コメントをここに', class: "form-control col-md-6" %>
+<div class="col">
+  <%= f.text_area :comment, placeholder: 'コメントをここに', class: "form-control" %>
   <%= f.submit '送信する', class: "btn-square-so-pop text-center w-25 mt-3" %>
+</div>
 <% end %>

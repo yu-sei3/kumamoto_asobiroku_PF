@@ -5,71 +5,51 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <p class="navbar-nav">
-        <% if end_user_signed_in? %>
-          ゆっくりして行きなっせ、<%= current_end_user.name %>さん！
-        <% end %>
-      </p>
-      <div class="row">
-      <div class="collapse navbar-collapse header-item" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <!--管理者表示-->
-          <% if admin_signed_in? %>
-            <li>
-              <%= link_to "Back", 'javascript:history.back()', class: "text-dark mr-3" %>
-            </li>
-            <li>
-              <%= link_to '会員一覧', admin_end_users_path, class: "text-dark mr-3" %>
-            </li>
-            <li>
-              <%= link_to 'ジャンル一覧', admin_genres_path, class: "text-dark mr-3" %>
-            </li>
-            <li>
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "text-dark" %>
-            </li>
-          <% else %>
-          <!--会員表示-->
-            <ul class="navbar-nav ml-auto">
-              <% if end_user_signed_in? %>
-                <li>
-                  <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
-                  
-                </li>
-                <li>
-                  <%= link_to '新規投稿', new_post_image_path, class: "text-dark ml-3" %>
-                </li>
-                <li>
-                  <%= link_to '投稿一覧', post_images_path, class: "text-dark ml-3" %>
-                </li>
-                <li>
-                  <%= link_to 'お問い合わせ', new_contact_path(end_user_id: current_end_user.id), class: "text-dark ml-3" %>
-                </li>
-                <li>
-                  <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？", class: "text-dark ml-3" %>
-                </li>
-                <li>
-                  <%= link_to "もどる", 'javascript:history.back()', class: "text-dark ml-3" %>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to '新規登録・', new_end_user_registration_path, class: "text-dark" %>
-                </li>
-                <li>
-                  <%= link_to 'ログイン', new_end_user_session_path, class: "text-dark" %>
-                  してから使ってはいよ！
-                </li>
-                <li>
-                  <%= link_to post_images_path, class: "text-dark ml-3" do %>
-                    <i class="fas fa-book"></i>投稿一覧
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to "もどる", 'javascript:history.back()', class: "text-dark ml-3" %>
-                </li>
-              <% end %>
-            </ul>
+      <div class="row center-block">
+        <div>
+          <%= link_to 'javascript:history.back()', class: "text-dark mr-2" do %>
+            <i class="fas fa-angle-double-left"></i>Back
           <% end %>
-        </ul>
+        </div>
+        <div class="collapse navbar-collapse header-item" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <!--管理者表示-->
+            <% if admin_signed_in? %>
+              <li>
+                <%= link_to '会員一覧', admin_end_users_path, class: "text-dark mr-3" %>
+              </li>
+              <li>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: "text-dark mr-3" %>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "text-dark" %>
+              </li>
+            <% else %>
+            <!--会員表示-->
+              <ul class="navbar-nav ml-auto">
+                <% if end_user_signed_in? %>
+                  <li>
+                    <%= link_to 'マイページ', end_user_path(current_end_user), class: "text-dark" %>
+                  </li>
+                  <li>
+                    <%= link_to '新規投稿', new_post_image_path, class: "text-dark ml-3" %>
+                  </li>
+                  <li>
+                    <%= link_to post_images_path, class: "text-dark ml-3" do %>
+                      <i class="far fa-images"></i>投稿一覧
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to 'お問い合わせ', new_contact_path(end_user_id: current_end_user.id), class: "text-dark ml-3" %>
+                  </li>
+                  <li>
+                    <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？", class: "text-dark ml-3" %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

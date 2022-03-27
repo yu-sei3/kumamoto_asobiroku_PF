@@ -12,17 +12,18 @@ class Public::PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
     if @post_image.save
+      flash[:notice] = "投稿されました！！"
       map = Map.new(post_image_maps_params)
       map.post_image_id = @post_image.id
       map.save
-      redirect_to post_images_path
+      redirect_to post_image_path(@post_image)
     else
       render :new
     end
   end
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.all.order(created_at: :desc)
     @genres = Genre.all
   end
 

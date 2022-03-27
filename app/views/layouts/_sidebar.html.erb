@@ -1,10 +1,14 @@
-<div class="genre">
-  <div class="genre-search">ジャンル検索</div>
-  <p class="genre-text">
+<div class="btn-group">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ジャンル検索
+  </button>
+  <div class="dropdown-menu">
     <% genres.each do |genre| %>
-      <%= link_to genre_path(genre.id) do %>
-        <%= genre.name %><br>
-      <% end %>
+      <p class="text-dark">
+        <%= link_to genre_path(genre.id) do %>
+          <%= genre.name %><br>
+        <% end %>
+      </p>
     <% end %>
-  </p>
+  </div>
 </div>

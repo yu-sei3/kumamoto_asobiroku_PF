@@ -1,18 +1,11 @@
-<div class="container">
-  <div class="row pt-5 pb-2">
-    <div class="col-md-4">
-      <%= render 'layouts/sidebar', genres: @genres %>
-    </div>
-    <div class="col-md-8">
-      <div class="card md-4">
-        <%= render 'layouts/carousel' %>
-        <div class="cover-text">
-          <h3 class="font-weight-bold">熊本あそび録に よぅ来たね！嬉しかぁ！！</h3>
-          <p class="font-weight-bold">こんサイトは、熊本のよかとこば県内外の人に</p>
-          <p class="font-weight-bold">知ってもらいたか人、知りたか人のためのサイトばい！</p>
-          <p class="font-weight-bold">熊本のよかとこば、どんどん投稿して、熊本の魅力ば発信していこばい！！</p>
-        </div>
-      </div>
+<div class="container my-2">
+  <div class="card md-4">
+    <%= render 'layouts/carousel' %>
+    <div class="cover-text">
+      <h3 class="font-weight-bold">熊本あそび録に よぅ来たね！嬉しかぁ！！</h3>
+      <p class="font-weight-bold">こんサイトは、熊本のよかとこば県内外の人に</p>
+      <p class="font-weight-bold">知ってもらいたか人、知りたか人のためのサイトばい！</p>
+      <p class="font-weight-bold">熊本のよかとこば、どんどん投稿して、熊本の魅力ば発信していこばい！！</p>
     </div>
   </div>
   <div class="row mt-5">
@@ -24,6 +17,42 @@
     </div>
     <div class="btn-group justify-content-center col-4 md-3">
       <%= link_to '新規登録', new_end_user_registration_path, class: "btn-square-so-pop" %>
+    </div>
+  </div>
+</div>
+<div class="container pt-2">
+  <div class="row py-3">
+    <div class="col text-center">
+      <%= render 'layouts/sidebar', genres: @genres %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <h3>～ New ～</h3>
+    </div>
+  </div>
+  <div class="row">
+    <% @post_images.each do |post_image| %>
+      <div class="col-lg-3">
+        <%= image_tag post_image.get_image, class: "img-fluid"; %>
+        <p class="card-title">
+          <%= post_image.created_at.strftime("%Y/%m/%d") %><br>
+          <%= link_to post_image_path(post_image.id), class: "text-dark" do %>
+            <strong><i class="far fa-flag"></i><span> <%= post_image.title %>｜</span></strong>
+          <% end %>
+          <span>
+            <i class="far fa-comment-alt"></i>
+            <%= post_image.post_comments.count %>
+          </span><br>
+          <span><%= image_tag post_image.end_user.get_profile_image, size: '30x30', class: "rounded-circle"; %>：<%= post_image.end_user.name %></span>
+        </p>
+        <p class="card-text">所在地：<%= post_image.location %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="row my-3">
+    <div class="col text-center">
+      <%= link_to '～ 投稿一覧 ～', post_images_path, class: "btn-secondary p-2" %>
     </div>
   </div>
 </div>

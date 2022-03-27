@@ -1,28 +1,37 @@
 <div class="container my-3 py-2">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3 text-center">
       <h3><strong><i class="far fa-flag"></i><span><%= @post_image.title %></span></strong></h3>
       <%= image_tag @post_image.get_image, size: '150x100' %>
-      <p>ユーザーネーム：<%= link_to @post_image.end_user.name, end_user_path(@post_image.end_user) %></p>
+      <p>
+        <%= link_to end_user_path(@post_image.end_user), class: "text-dark" do %>
+          <i class="fas fa-user"></i>：<%= @post_image.end_user.name %>
+        <% end %>
+      </p>
       <p>ジャンル：<%= @post_image.genre.name %></p>
       <p>所在地：<%= @post_image.location %></p>
       <p>紹介文：<%= @post_image.body %></p>
-      <%= link_to '編集する', edit_post_image_path(@post_image), class: "btn-square-so-pop text-center w-25" %>
+      <% if @end_user == current_end_user %>
+        <p><%= link_to '～ 編集する ～', edit_post_image_path(@post_image), class: "btn-secondary" %></p>
+      <% end %>
       <div>
         <div id="favorite_btn_<%= @post_image.id %>">
           <%= render "public/favorites/favorite_btn", post_image: @post_image %>
         </div>
-        <!--コメント投稿・一覧-->
-        <div id="comments_area">
-        <!--コメント一覧-->
-        <%= render 'public/post_comments/index', post_image: @post_image %>
-        <!--コメント投稿-->
-        </div>
-        <%= render 'public/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <%= render 'layouts/map', post_image: @post_image %>
+    </div>
+    <div class="col-md-4 text-center content-center">
+      <h5>～ コメント欄 ～</h5>
+      <!--コメント投稿・一覧-->
+      <div id="comments_area">
+      <!--コメント一覧-->
+      <%= render 'public/post_comments/index', post_image: @post_image %>
+      <!--コメント投稿-->
+      </div>
+      <%= render 'public/post_comments/form', post_image: @post_image, post_comment: @post_comment %>
     </div>
   </div>
 </div>
