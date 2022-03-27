@@ -10,7 +10,11 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= end_user.name %></td>
+          <td>
+            <%= link_to end_user_path(end_user) do %>
+              <span><%= end_user.name %></span>
+            <% end %>
+          </td>
           <td>フォロー数：<%= end_user.followed.count %></td>
           <td>フォロワー数：<%= end_user.follower.count %></td>
         </tr>

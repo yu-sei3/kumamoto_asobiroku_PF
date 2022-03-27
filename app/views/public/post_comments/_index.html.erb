@@ -1,18 +1,17 @@
-<% post_image.post_comments.each do |post_comment| %>
-  <div class="row">
-    <%= post_comment.created_at.strftime("%Y/%m/%d") %>
-    <%= post_comment.end_user.name %>
-    ｜
-    <% if post_comment.end_user == current_end_user %>
-      <%= link_to '削除', post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, remote: true, class: "text-danger" %>
-    <% end %>
+<% post_image.post_comments.reverse.each do |post_comment| %>
+<div class="col">
+  <%= post_comment.created_at.strftime("%Y/%m/%d") %>
+  <%= post_comment.end_user.name %>
+  <% if post_comment.end_user == current_end_user %>
+    <%= link_to '削除', post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete, remote: true, class: "text-danger" %>
+  <% end %>
+</div>
+<div class="my-2">
+  <div class="col text-center">
+    <%= image_tag post_comment.end_user.get_profile_image, size: '40x40', class: "rounded-circle" %>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="col-3">
-        <%= image_tag post_comment.end_user.get_profile_image, size: '100x100', class: "rounded-circle" %>
-      </div>
-        <%= post_comment.comment %>
-    </div>
+  <div class="col text-left">
+    <%= post_comment.comment %>
   </div>
+</div>
 <% end %>

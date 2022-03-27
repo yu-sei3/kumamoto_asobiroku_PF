@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   def top
     @genres = Genre.all
+    @post_images = PostImage.all.order(created_at: :desc).limit(4)
   end
 
   def about

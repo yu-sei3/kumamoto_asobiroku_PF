@@ -21,7 +21,7 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      redirect_to end_user_path(@end_user), notice: "You have updated user successfully"
+      redirect_to end_user_path(@end_user), notice: "編集内容が保存されました"
     else
       render :edit
     end

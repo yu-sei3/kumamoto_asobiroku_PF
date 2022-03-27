@@ -1,10 +1,10 @@
 <div class="container my-3">
-  <div class="row">
-    <div class="col-md-3">
+  <div class="row my-2">
+    <div class="col text-center">
       <%= render 'layouts/sidebar', genres: @genres %>
     </div>
-    <div class="col-md-9">
-      <%= render 'public/post_images/index', post_images: @post_images %>
-    </div>
+  </div>
+  <div class="row">
+    <%= render 'public/post_images/index', post_images: @post_images %>
   </div>
 </div>
