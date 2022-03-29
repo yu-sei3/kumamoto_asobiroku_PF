@@ -40,8 +40,8 @@
 
             // 情報ウィンドウ(吹き出し)の定義
             var infowindow = new google.maps.InfoWindow({
-              pposition:results[0].geometry.location,
-              content: inputAddress
+              position: {lat: <%= m.latitube %>, lng: <%= m.longitube %>},
+              content: '<%= post_image.location %>'
             });
 
             // クリックしたときに情報ウィンドウを表示

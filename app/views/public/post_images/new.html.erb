@@ -3,7 +3,7 @@
     <div class="col-md-5">
       <%= form_with model: @post_image, local: true do |f| %>
         <h4>タイトル</h4>
-        <%= f.text_field :title, class: "form-control col-md-6" %>
+        <%= f.text_field :title, placeholder: "タイトルを入力してください", class: "form-control col-md-6" %>
         <p class="text-danger">
           <% if @post_image.errors.include?(:title) %>
             <%= @post_image.errors.full_messages_for(:title).first %>
@@ -24,18 +24,19 @@
           <% end %>
         </p>
         <h4>所在地</h4>
-        <%= f.text_field :location, class: "form-control col-md-6" %><br>
+        <input class="form-control col-md-6 mb-1" id="address" type="textbox" Value="" , placeholder="例)熊本城・草千里">
+        <input type="button" value='地図を検索' onclick="codeAddress()"><br>
+        <%= f.text_field :location, placeholder: "地図を検索すると自動入力されます", class: "form-control col-md-6" %>
+        <p class="text-danger">＊検索できなかった場合は市区町村の入力をお願いします。</p>
         <p class="text-danger">
           <% if @post_image.errors.include?(:location) %>
             <%= @post_image.errors.full_messages_for(:location).first %>
           <% end %>
         </p>
-        <input class="form-control col-md-6 mb-1" id="address" type="textbox" Value="">
-        <input type="button" value='地図を検索' onclick="codeAddress()">
         <%= f.hidden_field :latitube, :value => "" %>
         <%= f.hidden_field :longitube, :value => "" %>
         <h4>紹介文</h4>
-        <%= f.text_area :body, class: "form-control col-md-6" %>
+        <%= f.text_area :body, placeholder: "2~300文字以内で記入してください", class: "form-control col-md-6" %>
         <p class="text-danger">
           <% if @post_image.errors.include?(:body) %>
             <%= @post_image.errors.full_messages_for(:body).first %>

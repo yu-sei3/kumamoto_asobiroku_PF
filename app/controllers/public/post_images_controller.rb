@@ -41,6 +41,7 @@ class Public::PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     if @post_image.update(post_image_params)
+      @post_image.map.update(post_image_maps_params)
       flash[:notice] = "ばっちり保存できました(   ¯꒳¯ )ｂ✧"
       redirect_to post_image_path(@post_image)
     else

@@ -8,7 +8,7 @@
     <div class="col-md-6">
         <%= form_with model: @post_image, local: true do |f| %>
     <h4>タイトル</h4>
-      <%= f.text_field :title, class: "form-control col-md-6" %>
+      <%= f.text_field :title, placeholder: "タイトルを入力してください", class: "form-control col-md-6" %>
       <p class="text-danger">
         <% if @post_image.errors.include?(:title) %>
           <%= @post_image.errors.full_messages_for(:title).first %>
@@ -29,9 +29,9 @@
         <% end %>
       </p>
     <h4>所在地</h4>
-      <%= f.text_field :location, class: "form-control col-md-6" %><br>
-      <input class="form-control col-md-6 mb-1" id="address" type="textbox" Value="">
-      <input type="button" value='地図を検索' onclick="codeAddress()">
+      <input class="form-control col-md-6 mb-1" id="address" type="textbox" Value="", placeholder="住所の変更がない場合は入力しないで投稿できます">
+      <input type="button" value='地図を検索' onclick="codeAddress()"><br>
+      <%= f.text_field :location, placeholder: "地図を検索すると自動入力されます",  class: "form-control col-md-6" %>
       <%= f.hidden_field :latitube, :value => "" %>
       <%= f.hidden_field :longitube, :value => "" %>
       <p class="text-danger">

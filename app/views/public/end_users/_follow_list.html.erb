@@ -10,13 +10,13 @@
       </thead>
       <tbody>
         <tr>
-          <td>
+          <th>
             <%= link_to end_user_path(end_user) do %>
-              <span><%= end_user.name %></span>
+              <span class="text-dark"><%= end_user.name %></span>
             <% end %>
-          </td>
-          <td>フォロー数：<%= end_user.followed.count %></td>
-          <td>フォロワー数：<%= end_user.follower.count %></td>
+          </th>
+          <th>フォロー数：<%= end_user.followed.count %></th>
+          <th>フォロワー数：<%= end_user.follower.count %></th>
         </tr>
       </tbody>
     </table>

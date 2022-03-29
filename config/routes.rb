@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   # Public/ ...Controller
   scope module: :public do
-    resources :end_users, only: [:show, :edit, :update] do
+    resources :end_users, only: [:index, :show, :edit, :update] do
       member do
         get :follows, :followers
       end

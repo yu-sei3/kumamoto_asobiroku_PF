@@ -24,9 +24,6 @@
     </tr>
   </table>
   <div class="row">
-    <%= render 'layouts/follow_btn', end_user: end_user %>
-  </div>
-  <div class="row">
     <% if !(@end_user.name == "guestuser") %>
       <% if end_user == current_end_user %>
         <%= link_to edit_end_user_path(end_user), class: "btn btn-outline-secondary btn-block" do %>
@@ -34,6 +31,9 @@
         <% end %>
       <% end %>
     <% end %>
+  </div>
+  <div class="row">
+    <%= render 'layouts/follow_btn', end_user: end_user %>
   </div>
 </div>
 <div class="col-md-7 col-md-offset-1 my-3 text-center">

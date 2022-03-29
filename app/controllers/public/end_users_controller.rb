@@ -3,7 +3,11 @@ class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
 
   # ゲスト用編集機能制限
-  # before_action :ensure_guest_end_user, only: [:edit]
+  before_action :ensure_guest_end_user, only: [:edit]
+
+  def index
+    redirect_to new_end_user_registration_path
+  end
 
   def show
     @end_user = EndUser.find(params[:id])
@@ -47,7 +51,7 @@ class Public::EndUsersController < ApplicationController
   # ゲスト用制限
   def ensure_guest_end_user
     @end_user = EndUser.find(params[:id])
-    if @end_user.name = "guestuser"
+    if @end_user.name == "guestuser"
       redirect_to end_user_path(current_end_user), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
