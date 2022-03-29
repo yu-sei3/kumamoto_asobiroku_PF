@@ -10,9 +10,10 @@
 
     <script>
       var map
+      var markers = [];
 
       var display = document.getElementById("display")
-
+      var marker = null;
       // mapの表示関数
       function initMap(){
         geocoder = new google.maps.Geocoder()
@@ -29,11 +30,13 @@
             map.setCenter({lat: <%= m.latitube %>, lng: <%= m.longitube %>});
 
             // マーカーを立てる
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
               position:{lat: <%= m.latitube %>, lng: <%= m.longitube %>},
               map: map,
               title: contentString
             });
+
+           markers.push(marker);
 
             // 情報ウィンドウ(吹き出し)の定義
             var infowindow = new google.maps.InfoWindow({
@@ -47,5 +50,85 @@
             });
           })();
       }
+
+      // Sets the map on all markers in the array.
+      function setMapOnAll(map) {
+        for (let i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+
+      // Removes the markers from the map, but keeps them in the array.
+      function hideMarkers() {
+        setMapOnAll(null);
+      }
+
+      // Shows any markers currently in the array.
+      function showMarkers() {
+        setMapOnAll(map);
+      }
+
+      // Deletes all markers in the array by removing references to them.
+      function deleteMarkers() {
+        hideMarkers();
+        markers = [];
+      }
+      function codeAddress(){
+          let inputAddress = document.getElementById('address').value;
+
+          geocoder.geocode({
+            'address': inputAddress
+          }, function (results, status){
+            if (status == 'OK') {
+
+              deleteMarkers();
+              // マーカーをセンターに表示する
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+
+              markers.push(marker);
+              geocodeLatLng(geocoder, results[0].geometry.location.lat(), results[0].geometry.location.lng())
+              document.getElementById("post_image_latitube").value = results[0].geometry.location.lat();
+              document.getElementById("post_image_longitube").value = results[0].geometry.location.lng();
+              display.textContent = "検索結果：" + results[0].geometry.location
+
+               // 情報ウィンドウ(吹き出し)の定義※検索した値を挿入
+              var infowindow = new google.maps.InfoWindow({
+                position:results[0].geometry.location,
+                content: inputAddress
+              });
+
+              // クリックしたときに情報ウィンドウを表示
+              marker.addListener("click", function(){
+                infowindow.open(map, marker);
+              });
+            }
+
+            else {
+                alert('該当する結果がありませんでした：' + status);
+            }
+          });
+        }
+
+        function geocodeLatLng(geocoder, lat, lng) {
+          const latlng = {
+            lat: lat,
+            lng: lng,
+        };
+
+        geocoder
+          .geocode({ location: latlng })
+          .then((response) => {
+            if (response.results[0]) {
+              $('#post_image_location').val(response.results[0].formatted_address);
+            } else {
+              window.alert("No results found");
+            }
+          })
+          .catch((e) => window.alert("Geocoder failed due to: " + e));
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

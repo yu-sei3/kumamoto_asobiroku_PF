@@ -2,13 +2,9 @@
   <div class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand mr-5" href="/"><span>熊本あそび録</span></a>
-      <div class="row center-block">
+      <div class="row d-flex align-item-center">
         <div>
-          <i class="fas fa-reply"></i>
-          <%= link_to 'Back', 'javascript:history.back()', class: "menu-list text-dark mr-2" %>
-        </div>
-        <div>
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto flex-row">
             <!--管理者表示-->
             <% if admin_signed_in? %>
               <li>
@@ -22,30 +18,33 @@
               </li>
             <% else %>
             <!--会員表示-->
-              <ul class="navbar-nav ml-auto">
                 <% if end_user_signed_in? %>
                   <li>
-                    <%= link_to 'マイページ', end_user_path(current_end_user), class: "menu-list text-dark" %>
-                      <i class="menu-icon fas fa-user"></i>
+                    <%= link_to end_user_path(current_end_user), class: "text-dark" do %>
+                      <i class="menu-icon fas fa-user"></i><span class="menu-list">マイページ</span>
+                    <% end %>
                   </li>
                   <li>
-                    <%= link_to '新規投稿', new_post_image_path, class: "menu-list text-dark ml-3" %>
-                    <i class="menu-icon fas fa-pen-square"></i>
+                    <%= link_to new_post_image_path, class: "text-dark ml-3" do %>
+                    <i class="menu-icon fas fa-pen-square"></i><span class="menu-list">新規投稿</span>
+                    <% end %>
                   </li>
                   <li>
-                    <%= link_to '投稿一覧', post_images_path, class: "menu-list text-dark ml-3" %>
-                    <i class="menu-icon far fa-images"></i>
+                    <%= link_to post_images_path, class: "text-dark ml-3" do %>
+                    <i class="menu-icon far fa-images"></i><span class="menu-list">投稿一覧</span>
+                    <% end %>
                   </li>
                   <li>
-                    <%= link_to 'お問い合わせ', new_contact_path(end_user_id: current_end_user.id), class: "menu-list text-dark ml-3" %>
-                    <i class="menu-icon far fa-envelope"></i>
+                    <%= link_to new_contact_path(end_user_id: current_end_user.id), class: "text-dark ml-3" do %>
+                    <i class="menu-icon far fa-envelope"></i><span class="menu-list">お問い合わせ</span>
+                    <% end %>
                   </li>
                   <li>
-                    <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？", class: "menu-list text-dark ml-3" %>
-                    <i class="menu-icon fas fa-sign-out-alt"></i>
+                    <%= link_to destroy_end_user_session_path, method: :delete, "data-confirm" => "ログアウトしますか？", class: "text-dark mx-3" do %>
+                    <i class="menu-icon fas fa-sign-out-alt"></i><span class="menu-list">ログアウト</span>
+                    <% end %>
                   </li>
                 <% end %>
-              </ul>
             <% end %>
           </ul>
         </div>

@@ -7,7 +7,7 @@ class Public::EndUsersController < ApplicationController
 
   def show
     @end_user = EndUser.find(params[:id])
-    @post_images = @end_user.post_images.page(params[:page])
+    @post_images = @end_user.post_images.page(params[:page]).order(created_at: :desc)
     @following_end_users = @end_user.following_end_user
     @follower_end_user = @end_user.follower_end_user
   end

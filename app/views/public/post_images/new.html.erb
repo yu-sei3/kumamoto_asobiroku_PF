@@ -90,6 +90,8 @@
                 position: results[0].geometry.location
               });
 
+              geocodeLatLng(geocoder, results[0].geometry.location.lat(), results[0].geometry.location.lng())
+
               document.getElementById("post_image_latitube").value = results[0].geometry.location.lat();
               document.getElementById("post_image_longitube").value = results[0].geometry.location.lng();
               display.textContent = "検索結果：" + results[0].geometry.location
@@ -111,6 +113,27 @@
             }
           });
         }
+
+        function geocodeLatLng(geocoder, lat, lng) {
+          const latlng = {
+            lat: lat,
+            lng: lng,
+          };
+
+          geocoder
+            .geocode({ location: latlng })
+            .then((response) => {
+              if (response.results[0]) {
+
+                $('#post_image_location').val(response.results[0].formatted_address);
+
+              } else {
+                window.alert("No results found");
+              }
+            })
+            .catch((e) => window.alert("Geocoder failed due to: " + e));
+        }
+
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     </div>
