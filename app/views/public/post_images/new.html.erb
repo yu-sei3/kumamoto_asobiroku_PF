@@ -92,7 +92,6 @@
               });
 
               geocodeLatLng(geocoder, results[0].geometry.location.lat(), results[0].geometry.location.lng())
-
               document.getElementById("post_image_latitube").value = results[0].geometry.location.lat();
               document.getElementById("post_image_longitube").value = results[0].geometry.location.lng();
               display.textContent = "検索結果：" + results[0].geometry.location

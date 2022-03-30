@@ -3,6 +3,11 @@ header {
   background-color: #9bf9cc;
 }
 
+.logo {
+  font-family: 'Yomogi', cursive;
+  font-weight: bold;
+}
+
 footer {
   width: 100%;
   margin: 0, auto;
@@ -45,6 +50,10 @@ footer {
 
 .table a {
   color: black;
+}
+
+.menu-list {
+  font-weight: bold;
 }
 
 .menu-icon {
