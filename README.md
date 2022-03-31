@@ -34,8 +34,10 @@
 熊本県が好きな人と交流したい時。
 
 ## 設計書
-
-<...>
+### ER図
+* https://app.diagrams.net/#G1e7X8bPsrW5vX5T0fN3CFse6-o7Y56s8-
+### テーブル定義書
+* https://docs.google.com/spreadsheets/d/18MxoZoA6pHgMZ88UOuBvm8zgGHM7RzORmDvYgXDmwgE/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
