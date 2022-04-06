@@ -11,6 +11,7 @@ class Public::PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.end_user_id = current_end_user.id
+    @post_image.score = Language.get_data(post_image_params[:body])
     if @post_image.save
       flash[:notice] = "よか あそび場の増えました！！ありがとうございます( ⑉¯ ꇴ ¯⑉ )"
       map = Map.new(post_image_maps_params)
@@ -40,6 +41,7 @@ class Public::PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
+    @post_image.score = Language.get_data(post_image_params[:body])
     if @post_image.update(post_image_params)
       @post_image.map.update(post_image_maps_params)
       flash[:notice] = "ばっちり保存できました(   ¯꒳¯ )ｂ✧"

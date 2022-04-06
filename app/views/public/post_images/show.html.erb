@@ -10,6 +10,7 @@
       </p>
       <p>ジャンル：<%= @post_image.genre.name %></p>
       <p>所在地：<%= @post_image.location %></p>
+      <p class="sentiment-score">紹介文の感情分析スコア[<%= @post_image.score %>]</p>
       <p>紹介文：<%= @post_image.body %></p>
       <% if @post_image.end_user == current_end_user %>
         <p><%= link_to '～ 編集する ～', edit_post_image_path(@post_image), class: "btn-secondary" %></p>
