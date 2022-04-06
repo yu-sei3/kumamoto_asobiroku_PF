@@ -3,6 +3,7 @@
     <%= image_tag post_image.get_image, class: "d-block w-100", size: ('283x233') %>
     <p class="card-title">
       <%= post_image.created_at.strftime("%Y/%m/%d") %><br>
+      <span class="sentiment-score">紹介文の感情分析スコア[<%= post_image.score %>]</span><br>
       <%= link_to post_image_path(post_image.id), class: "text-dark" do %>
         <strong><i class="far fa-flag"></i><span> <%= post_image.title %>｜</span></strong>
       <% end %>

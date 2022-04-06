@@ -13,9 +13,12 @@ module KumamotoAsobiroku
 
     # field_with_errorsによるレイアウト崩れ防止
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
-    
+
     # errorメッセージの日本語化
     config.i18n.default_locale = :ja
+
+    # lib 読み込み用
+    config.paths.add 'lib', eager_load: true
 
     # Configuration for the application, engines, and railties goes here.
     #
